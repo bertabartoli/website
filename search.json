@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "Course Name (Teaching Assistant), Fall 20XX"
+  },
+  {
+    "objectID": "teaching.html#new-york-university",
+    "href": "teaching.html#new-york-university",
+    "title": "Teaching",
+    "section": "",
+    "text": "Course Name (Teaching Assistant), Fall 20XX"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Berta Bartoli",
+    "section": "",
+    "text": "I am a PhD candidate in Psychology and Social Intervention at New York University, where my research bridges psychology, education policy, and quantitative methods to understand how social and institutional contexts shape children’s access to educational opportunities. Through interdisciplinary research and partnerships with policymakers and practitioners, I seek to generate evidence and develop practical tools that make early education systems more equitable, accessible, and responsive to the needs of children and families.\nMy research has been funded by the Institute of Education Sciences (IES) and the National Science Foundation (NSF), as an IES-PIRT fellow and an American Educational Research Association-NSF Dissertation Finishing award fellow."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Berta Bartoli",
+    "section": "Education",
+    "text": "Education\nNew York University | PhD | expected Spring 2027"
+  },
+  {
+    "objectID": "index.html#interests",
+    "href": "index.html#interests",
+    "title": "Berta Bartoli",
+    "section": "Interests",
+    "text": "Interests\nEducation policy · School choice · Urban economics"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "CV",
+    "section": "",
+    "text": "Download CV (PDF)"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "Title of Job Market Paper Job market paper. [PDF]\nShort abstract goes here."
+  },
+  {
+    "objectID": "research.html#working-papers",
+    "href": "research.html#working-papers",
+    "title": "Research",
+    "section": "",
+    "text": "Title of Job Market Paper Job market paper. [PDF]\nShort abstract goes here."
+  },
+  {
+    "objectID": "research.html#work-in-progress",
+    "href": "research.html#work-in-progress",
+    "title": "Research",
+    "section": "Work in Progress",
+    "text": "Work in Progress\nTitle of Project With coauthor."
+  },
+  {
+    "objectID": "research.html#example-r-chunk",
+    "href": "research.html#example-r-chunk",
+    "title": "Research",
+    "section": "Example R chunk",
+    "text": "Example R chunk\nThis chunk runs R when the site builds. Delete it once you’ve seen it work."
+  }
+]
