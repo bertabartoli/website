@@ -1,0 +1,32 @@
+---
+title: "Berta Bartoli"
+subtitle: "PhD Candidate, New York University"
+image: files/profile.jpg
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:berta.bartoli@nyu.edu
+    - icon: file-earmark-text
+      text: CV
+      href: cv.qmd
+    - icon: github
+      text: GitHub
+      href: https://github.com/
+---
+
+I am a PhD candidate in Psychology and Social Intervention at New York University, where my research bridges psychology, education policy, and quantitative methods to understand how social and institutional contexts shape children's access to educational opportunities. Through interdisciplinary research and partnerships with policymakers and practitioners, I seek to generate evidence and develop practical tools that make early education systems more equitable, accessible, and responsive to the needs of children and families.
+
+My research has been funded by the Institute of Education Sciences (IES) and the National Science Foundation (NSF), as an IES-PIRT fellow and an American Educational Research Association-NSF Dissertation Finishing award fellow.
+
+<!-- photo at files/profile.jpg. -->
+
+## Education
+
+**New York University** \| PhD \| expected Spring 2027
+
+## Interests
+
+Education policy · School choice · Urban economics

@@ -1,0 +1,7 @@
+---
+title: "CV"
+---
+
+[Download CV (PDF)](files/cv.pdf){.btn .btn-outline-primary}
+
+<!-- Put your CV at files/cv.pdf. -->

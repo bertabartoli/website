@@ -1,0 +1,29 @@
+---
+title: "Research"
+---
+
+## Working Papers
+
+**Title of Job Market Paper**
+*Job market paper.* [[PDF]](files/jmp.pdf)
+
+Short abstract goes here.
+
+## Work in Progress
+
+**Title of Project**
+With coauthor.
+
+## Example R chunk
+
+This chunk runs R when the site builds. Delete it once you've seen it work.
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 3.5
+library(graphics)
+par(family = "serif")
+plot(cars, pch = 19, col = "steelblue",
+     xlab = "Speed", ylab = "Stopping distance")
+```
