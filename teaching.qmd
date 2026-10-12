@@ -2,6 +2,49 @@
 title: "Teaching"
 ---
 
-## New York University
+## Primary Instructor
 
-**Course Name** (Teaching Assistant), Fall 20XX
+**Child Development and Social Policy in a Global Society** (APSY-UE 1279) | Spring 2026\
+Undergraduate, Department of Applied Psychology, New York University
+
+Course description: How does social policy shape children's lives? And how do children's needs shape social policy? This course explores these questions through interdisciplinary, philosophical, theoretical, and historical lenses, at national and global scales. Students gain tools to understand the role contextual forces play in children's development and how social policy can, in turn, foster that development. We also examine the policymaking process itself, including the roles that advocates, philanthropists, researchers, and policymakers play in addressing key issues, through readings, activities, and conversations with experts. By the end of the course, students are able to critically engage with the diverse perspectives underlying policymaking, discuss child development within complex policy contexts, and evaluate whether and how social policies respond to children's needs.
+
+[Syllabus (PDF)](files/syllabus-apsy-ue-1279.pdf){.btn .btn-outline-primary .btn-sm}
+
+## Teaching and Course Assistant
+
+**Research and Evaluation Methods in Behavioral Sciences** (APSY-GE 2070) | Fall 2025, Fall 2026\
+Teaching Assistant, Counseling Graduate Program, Department of Applied Psychology, New York University\
+*Instructors: Christina Wusinich and Ahmed Alif*
+
+Course description: Analyzing and evaluating research studies in the behavioral sciences across the lifespan, including with children, adolescents, and adults. Topics include the science of research, developing hypotheses, sampling, defining and measuring variables, experimental and non-experimental designs, qualitative and evaluation designs, and research ethics.
+
+**Multiple Regression and Introduction to Econometrics** (PADM-GP 2902, online) | Summer 2025\
+Teaching Assistant, Policy Graduate Program, Wagner School of Public Policy, New York University\
+*Instructor: Sharmistha Chakrabarti*
+
+Course description: Multiple regression as a core tool for policy analysis: estimating and interpreting models, judging whether coefficients are biased and standard errors reliable, and assessing when regression results support causal claims. Students apply each method in Stata and estimate their own model in a final project.
+
+**Introduction to US Education** (HSED-UE 1005, online) | Fall 2024, Fall 2025\
+Course Assistant, Applied Statistics, Social Science, and Humanities, New York University\
+*Instructor: Dominic Brewer*
+
+Course description: A survey of the central themes and debates in American schooling: how US schools began and changed over time, how children learn and differ, and how teaching, schools, and classrooms should be organized to support learning.
+
+**Political Economy of Education: Why Does College Cost So Much?** (EDST-UE 1321, online) | Fall 2023, Spring 2025, Spring 2026\
+Course Assistant, Applied Statistics, Social Science, and Humanities, New York University\
+*Instructor: Dominic Brewer*
+
+Course description: Why college costs keep rising, why students choose expensive institutions over cheaper alternatives, and whether college should be free. Students examine economic concepts and evidence on the value of higher education, financial aid policy, and university budgets.
+
+**Introduction to Psychology and Its Principles** (APSY-UE 2) | Fall 2022\
+Course Assistant, Department of Applied Psychology, New York University\
+*Instructor: Adina Schick*
+
+Course description: The fundamental principles of psychology across its major areas, including the biological bases of behavior, learning, development, motivation, and social and abnormal behavior, with an emphasis on connecting theory to classic and contemporary research.
+
+## Mentoring
+
+**QUEST Program Mentor** | Summer 2025\
+New York University\
+Mentored Michelle Mascorro-Santibañez (University of Victoria, Canada).

@@ -1,29 +1,41 @@
 ---
 title: "Research"
+listing:
+  - id: research-areas
+    contents:
+      - research/determinants.qmd
+      - research/programs.qmd
+      - research/access.qmd
+    sort: false
+    type: grid
+    grid-columns: 3
+    fields: [image, title, description]
+    image-height: 180px
+  - id: research-projects
+    contents:
+      - projects/pre-k.qmd
+      - projects/ecsp.qmd
+    sort: false
+    type: grid
+    grid-columns: 3
+    fields: [image, title, description]
+    image-height: 180px
 ---
 
-## Working Papers
+My research is motivated by a central question: **how can we empower caregivers and create systems that make high-quality educational opportunities more equitable and accessible?**
 
-**Title of Job Market Paper**
-*Job market paper.* [[PDF]](files/jmp.pdf)
+I study the full path of educational opportunity: first, how children get *into* schools and programs, and then how those systems can keep giving them high-quality opportunities once they are there. Along that path, I believe it is just as important to understand *how* policies and programs are put into practice, and how they can be made more effective, as it is to know *whether* they work. My work is interdisciplinary, draws on quantitative and qualitative methods, and is done in partnership with education agencies, such as those in the New York City Public Schools system and in other education systems around the world.
 
-Short abstract goes here.
+I am currently most interested in access to high-quality early childhood education.
 
-## Work in Progress
+## Research Areas
 
-**Title of Project**
-With coauthor.
+::: {#research-areas}
+:::
 
-## Example R chunk
+## Research Projects
 
-This chunk runs R when the site builds. Delete it once you've seen it work.
+::: {#research-projects}
+:::
 
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 3.5
-library(graphics)
-par(family = "serif")
-plot(cars, pch = 19, col = "steelblue",
-     xlab = "Speed", ylab = "Stopping distance")
-```
+See [Publications](publications.qmd) for a full list of my work.
