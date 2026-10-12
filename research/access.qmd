@@ -1,0 +1,23 @@
+---
+title: "Access to Early Education"
+description: "How families navigate choice and enrollment in early education systems, and what systems can do to support them."
+toc: true
+---
+
+Before children can benefit from high-quality programs, they have to get into them. In partnership with education agencies, I study the challenges families face in gaining access to schools and programs, and I develop and evaluate tools and system-level changes to address them. My Choice-in-Context model frames family decision-making within the structures of choice systems, showing how family, system, and context factors interact to produce inequities, rather than treating disparities as the result of family preferences alone. This model guides my dissertation, conducted with the New York City Public Schools Student Enrollment Office, which includes an early warning system that uses machine learning to identify families at risk of not enrolling in preschool. This is the focus of my future research agenda.
+
+## Related Work
+
+**Bartoli, B.**, Morris-Perez, P., & Hughes, D. (2026). The Choice-in-Context Model: An interdisciplinary theory of decision-making in school choice contexts. *AERA Open, 12*. [[DOI]](https://doi.org/10.1177/23328584261452155)
+
+**Bartoli, B.** Catching families before they slip through the cracks: Using early warning systems to increase preschool enrollment. *Work in progress.*
+
+**Bartoli, B.**, Chang, J., & King, J. R. Post-pandemic (dis)enrollment in New York City's choice-based school system. *Work in progress.*
+
+**Bartoli, B.** "Does choice architecture matter in universal ECE systems? Linking application system design, information, and family behavior." APPAM Annual Meeting, 2024.
+
+**Bartoli, B.** "Embedding AI into New York City Public Schools' family supports: A pilot program." Poster, SREE Annual Meeting, 2024.
+
+**Bartoli, B.** "The illusion of choice: The role of constraints and privilege in Pre-K for All." AERA Annual Meeting, 2024.
+
+**Bartoli, B.** "Navigating school choice processes in a universal pre-K system." APPAM Annual Meeting, 2023.

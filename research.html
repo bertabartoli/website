@@ -36,6 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -48,7 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8b348f4b4b74a528bf910da1e8c5139e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-40a4126a6b28aac45dcce4e98570e65f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -77,7 +79,93 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-research-areas .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-research-areas'] = new List('listing-research-areas', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-research-projects .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-research-projects'] = new List('listing-research-projects', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -270,6 +358,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
@@ -278,7 +370,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:bartoli.berta@gmail.com"> <i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:berta.bartoli@nyu.edu"> <i class="bi bi-envelope" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -318,27 +410,106 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="working-papers" class="level2">
-<h2 class="anchored" data-anchor-id="working-papers">Working Papers</h2>
-<p><strong>Title of Job Market Paper</strong> <em>Job market paper.</em> <a href="files/jmp.pdf">[PDF]</a></p>
-<p>Short abstract goes here.</p>
+<p>My research is motivated by a central question: <strong>how can we empower caregivers and create systems that make high-quality educational opportunities more equitable and accessible?</strong></p>
+<p>I study the full path of educational opportunity: first, how children get <em>into</em> schools and programs, and then how those systems can keep giving them high-quality opportunities once they are there. Along that path, I believe it is just as important to understand <em>how</em> policies and programs are put into practice, and how they can be made more effective, as it is to know <em>whether</em> they work. My work is interdisciplinary, draws on quantitative and qualitative methods, and is done in partnership with education agencies, such as those in the New York City Public Schools system and in other education systems around the world.</p>
+<p>I am currently most interested in access to high-quality early childhood education.</p>
+<section id="research-areas" class="level2">
+<h2 class="anchored" data-anchor-id="research-areas">Research Areas</h2>
+<div id="listing-research-areas" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1791759534405" data-listing-reading-time-sort="2" data-listing-word-count-sort="241">
+<a href="./research/determinants.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./research/images/houses.png" class="thumbnail-image card-img" style="height: 180px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Determinants of Educational Opportunity
+</h5>
+<div class="card-text listing-description delink">
+<p>How children’s homes, schools, and broader structural contexts shape their learning, development, and access to opportunity.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1791759534405" data-listing-reading-time-sort="2" data-listing-word-count-sort="398">
+<a href="./research/programs.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./research/images/classroom.webp" class="thumbnail-image card-img" style="height: 180px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Strengthening Programs and Their Implementation
+</h5>
+<div class="card-text listing-description delink">
+<p>Whether education programs work, and the conditions under which they can be implemented well, improved, and scaled.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1791759887941" data-listing-reading-time-sort="2" data-listing-word-count-sort="275">
+<a href="./research/access.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./research/images/family.png" class="thumbnail-image card-img" style="height: 180px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Access to Education
+</h5>
+<div class="card-text listing-description delink">
+<p>How families navigate choice and enrollment in education systems, and what systems can do to support them. My work has focused on access to early education programs.</p>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
 </section>
-<section id="work-in-progress" class="level2">
-<h2 class="anchored" data-anchor-id="work-in-progress">Work in Progress</h2>
-<p><strong>Title of Project</strong> With coauthor.</p>
-</section>
-<section id="example-r-chunk" class="level2">
-<h2 class="anchored" data-anchor-id="example-r-chunk">Example R chunk</h2>
-<p>This chunk runs R when the site builds. Delete it once you’ve seen it work.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="research_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="576"></p>
-</figure>
+<section id="research-projects" class="level2">
+<h2 class="anchored" data-anchor-id="research-projects">Research Projects</h2>
+<div id="listing-research-projects" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1791759534417" data-listing-reading-time-sort="2" data-listing-word-count-sort="326">
+<a href="./projects/pre-k.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./projects/images/raising-hand.png" class="thumbnail-image card-img" style="height: 180px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Strengthening the Architecture for High-Quality Universal Pre-K
+</h5>
+<div class="card-text listing-description delink">
+<p>A research-practice partnership studying how New York City’s Pre-K for All system supports teachers and children’s school readiness.</p>
 </div>
 </div>
+</div></a>
 </div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1791759534405" data-listing-reading-time-sort="1" data-listing-word-count-sort="134">
+<a href="./projects/ecsp.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./projects/images/violinist.png" class="thumbnail-image card-img" style="height: 180px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Early Childhood Strings Program
+</h5>
+<div class="card-text listing-description delink">
+<p>An ongoing partnership to support the implementation and evaluation of a strings-based arts integration pilot in New York City pre-K through grade 2 classrooms.</p>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<p>See <a href="./publications.html">Publications</a> for a full list of my work.</p>
+
 
 
 </section>

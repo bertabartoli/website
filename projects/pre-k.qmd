@@ -1,0 +1,23 @@
+---
+title: "Strengthening the Architecture for High-Quality Universal Pre-K"
+description: "A research-practice partnership studying how New York City's Pre-K for All system supports teachers and children's school readiness."
+toc: true
+---
+
+New York City's Pre-K for All is one of the largest universal pre-K systems in the country. In partnership with the NYC Public Schools Division of Early Childhood Education, this project studies how the system's professional learning and instructional programs, including the *Create* arts integration program, shape teacher practice and children's school readiness, and what supports their implementation at scale.
+
+**Partner:** New York City Public Schools Division of Early Childhood Education\
+**Team:** NYU Institute of Human Development and Social Change (PIs: Pamela Morris-Perez, Rachel Abenavoli, and Elise Cappella)\
+**Role:** Graduate Assistant, December 2022–present
+
+## Related Work
+
+Abenavoli, R., Siegel, J., Aviles, A. I., Kitrosser, J., Dominguez, A., **Bartoli, B.**, Young, J., Kim, J., Davis, R., Wallack, J., Cappella, E., & Morris-Perez, P. (2026). Strengthening school readiness for all: Impacts of New York City's Pre-K for All professional learning on teacher practice and children's school readiness. *Prevention Science*, 1–15. [[DOI]](https://doi.org/10.1007/s11121-026-01963-7)
+
+Aviles, A. I., Abenavoli, R., **Bartoli, B.**, Siegel, J., Kitrosser, J., Dominguez, A., Young, J., Kim, J., Rockey, K., Barahal, H., Wallack, J., Cappella, E., & Morris-Perez, P. (2026). Bringing arts integration to universal pre-K: Variation in impact of New York City's Create. *Early Childhood Research Quarterly, 78*, 45–58. [[DOI]](https://doi.org/10.1016/j.ecresq.2026.08.006)
+
+**Bartoli, B.**, Aviles, A. I., Blecker, A., Abenavoli, R., Kohan, A., Song, Y., Cappella, E., Morris-Perez, P., et al. Changing teacher practices in pre-K: Qualitative insights from New York City's Create. *Work in progress.*
+
+**Bartoli, B.**, Aviles, A. I., Abenavoli, R., *Mascorro-Santibañez, M.*, Cappella, E., Morris-Perez, P., et al. Integrating the arts at scale: A qualitative study of implementation strategies and children's skill development in New York City's universal pre-K. *Work in progress.*
+
+**Bartoli, B.**, & Siegel, J., presenting work with Abenavoli, R., Aviles, A., Cappella, E., & Morris-Perez, P. "Professional development post-pandemic: What makes an impact on school readiness in Pre-K for All?" SREE Annual Meeting, 2024.

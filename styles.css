@@ -1,1 +1,239 @@
-/* Custom styles go here */
+/* Research area and project cards: borderless, centered, images shown whole */
+.quarto-grid-item.card {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
+.quarto-grid-item .card-img-top {
+  background: transparent;
+}
+
+.quarto-grid-item p.card-img-top > img.thumbnail-image {
+  object-fit: contain;
+  padding: 0.5rem 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.quarto-grid-item:hover p.card-img-top > img.thumbnail-image {
+  transform: translateY(-4px);
+}
+
+.quarto-grid-item .card-body h5.card-title.listing-title {
+  margin-bottom: 0.9rem;
+}
+
+/* Partner logo row on project pages */
+.partner-logos p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  margin: 1.5rem 0;
+}
+
+.partner-logos img {
+  height: 60px;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Links in page content: slightly darker than body text instead of blue */
+main a:not(.btn):not(.nav-link):not(.quarto-grid-link):not(.anchorjs-link) {
+  color: #1c1e20;
+  text-decoration: underline;
+  text-decoration-color: rgba(28, 30, 32, 0.35);
+  text-underline-offset: 2px;
+}
+
+main a:not(.btn):not(.nav-link):not(.quarto-grid-link):not(.anchorjs-link):hover {
+  text-decoration-color: currentColor;
+}
+
+body.quarto-dark main a:not(.btn):not(.nav-link):not(.quarto-grid-link):not(.anchorjs-link) {
+  color: #f5f5f5;
+  text-decoration-color: rgba(245, 245, 245, 0.4);
+}
+
+/* Area and project pages: illustration floats beside the text */
+.page-illustration {
+  float: right;
+  width: 38%;
+  margin: 0 0 1rem 2rem;
+  text-align: center;
+}
+
+.page-illustration img {
+  width: 100%;
+  height: auto;
+}
+
+.page-illustration figure,
+.page-illustration p {
+  margin-bottom: 0.25rem;
+}
+
+main h2,
+.partner-logos {
+  clear: both;
+}
+
+@media (max-width: 767.98px) {
+  .page-illustration {
+    float: none;
+    width: 70%;
+    margin: 0 auto 1rem;
+  }
+}
+
+/* Home page: photo and intro side by side, remaining text full width below */
+.home-top,
+.home-more {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-top {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.home-profile {
+  flex: 0 0 300px;
+  text-align: center;
+}
+
+.home-profile p {
+  margin-bottom: 0.5rem;
+}
+
+.home-photo,
+.home-profile img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.home-name {
+  display: block;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+
+.home-subtitle {
+  display: block;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.home-profile .btn {
+  margin: 0.25rem 0.15rem;
+}
+
+.home-intro {
+  flex: 1 1 auto;
+}
+
+.home-more {
+  margin-top: 2rem;
+}
+
+@media (max-width: 767.98px) {
+  .home-top {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .home-profile {
+    flex-basis: auto;
+  }
+}
+
+/* Publications page: interactive research map */
+.network-wrap {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 1rem 0 2.5rem;
+}
+
+.network-panel {
+  flex: 0 0 250px;
+  min-height: 260px;
+  padding-top: 4rem;
+}
+
+.network-svg {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 860px;
+  height: auto;
+  overflow: visible;
+}
+
+.network-kicker {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #57068c;
+  margin-bottom: 0.4rem;
+}
+
+body.quarto-dark .network-kicker { color: #c9a3ef; }
+
+.network-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.network-meta,
+.network-help,
+.network-legend,
+.network-tags,
+.network-link,
+.network-list {
+  font-size: 0.92rem;
+}
+
+.network-meta { margin-bottom: 0.75rem; opacity: 0.85; }
+.network-tags div { margin-bottom: 0.2rem; }
+.network-tags span { font-weight: 600; }
+.network-link { margin-top: 0.75rem; opacity: 0.8; }
+.network-list { padding-left: 1.1rem; }
+.network-list li { margin-bottom: 0.3rem; }
+
+.network-legend .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1.6px solid #8e5bc2;
+}
+
+.network-legend .dot.filled { background: #8e5bc2; opacity: 0.7; }
+
+.network-sub-label {
+  font-size: 17px;
+  fill: currentColor;
+}
+
+.network-theme-label {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .network-wrap { flex-direction: column; gap: 0.5rem; }
+  .network-panel { flex-basis: auto; min-height: 200px; padding-top: 0; }
+}

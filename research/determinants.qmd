@@ -1,0 +1,21 @@
+---
+title: "Determinants of Educational Opportunity"
+description: "How children's homes, schools, and broader structural contexts shape their learning, development, and access to opportunity."
+toc: true
+---
+
+Children develop within distinct but interconnected contexts: their families, their schools, and the broader social and structural systems around them. Drawing on ecological systems theory and interdisciplinary perspectives, I study how these contexts shape children's learning, development, and access to educational opportunity, and how these processes vary across children and communities. This work grounds my partnership research: understanding the contexts children grow up in helps identify where systems can best support them.
+
+## Related Work
+
+**Bartoli, B.**, Joshi, C., & Wolf, S. (2022). Parental engagement in Ghanaian pre-primary schools: A mixed methods approach. *International Journal of Educational Research, 112*. [[DOI]](https://doi.org/10.1016/j.ijer.2022.101926)
+
+Kumar, A., **Bartoli, B.**, Lichand, G., & Wolf, S. (2023). Sociodemographic predictors of depression and anxiety symptomatology among parents in rural Côte d'Ivoire. *Journal of Affective Disorders, 338*, 1–9. [[DOI]](https://doi.org/10.1016/j.jad.2023.05.060)
+
+Jeong, J., **Bartoli, B.**, & McCann, J. (2024). Development and validation of a measure for father involvement during early childhood in a resource-limited context. *BMC Public Health, 24*, 2970. [[DOI]](https://doi.org/10.1186/s12889-024-20344-9)
+
+**Bartoli, B.**, & King, J. R. Sleep tight, act right? The effect of clock time policy on student behavior outcomes. *Work in progress.*
+
+Morris-Perez, P., Connors, M., & **Bartoli, B.** The concentric circles were never Bronfenbrenner's: A story of mistaken attribution with profound consequences. *Submitted.*
+
+Morris-Perez, P., Connors, M., & **Bartoli, B.** Bronfenbrenner's legacy: Harnessing the beautiful complexity of humanity. In P. A. Fisher & J. Lombardi (Eds.), *The Cambridge Handbook of the New Ecology of Early Childhood*. Forthcoming.

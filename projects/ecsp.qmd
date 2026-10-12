@@ -1,0 +1,16 @@
+---
+title: "Early Childhood Strings Program"
+description: "An implementation study of a strings-based arts integration pilot in New York City pre-K through grade 2 classrooms."
+image: images/violinist.png
+toc: true
+---
+
+![](images/playing-music.svg){width=60% fig-align="center" fig-alt="Illustration of a woman playing the violin next to a music stand"}
+
+[Illustration by [Storyset](https://storyset.com/)]{.small .text-muted}
+
+The Early Childhood Strings Program brings violin instruction into New York City Public Schools classrooms from pre-K through grade 2, with the aim of narrowing early learning gaps, particularly in literacy. In partnership with the NYCPS Arts Office, our team is conducting an implementation study to understand the mechanisms through which learning the violin may shape children's learning and development, before assessing the program's impacts in Spring 2027.
+
+**Partner:** New York City Public Schools Arts Office\
+**Team:** NYU Institute of Human Development and Social Change (PI: Pamela Morris-Perez)\
+**Role:** Graduate Assistant, April 2025–present
