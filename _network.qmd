@@ -1,25 +1,26 @@
 <!-- Interactive map of how my work connects partnerships, topics, methods, and disciplines.
-     Edit data/network-taxonomy.csv (categories) and data/network-items.csv (papers and their tags). -->
-
-::: {.column-page}
+     Edit data/network-taxonomy.csv (categories) and data/network-items.csv (one row per work; mark each
+     category column with an x). Column names in network-items.csv must match the "subtopic" names. -->
 
 ```{ojs}
 //| echo: false
-taxonomy = FileAttachment("data/network-taxonomy.csv").csv()
-items = FileAttachment("data/network-items.csv").csv()
+// Strip the byte-order mark Excel adds so the first column name reads cleanly
+readCsv = async f => d3.csvParse((await f.text()).replace(/^\uFEFF/, ""))
+taxonomy = readCsv(FileAttachment("data/network-taxonomy.csv"))
+items = readCsv(FileAttachment("data/network-items.csv"))
 ```
 
 ```{ojs}
 //| echo: false
 network = {
-  const W = 1160, H = 1160, cx = W / 2, cy = H / 2, R = 380;
-  const dotR = R - 14, subR = R * 0.62, themeR = R * 0.28;
 
-  const themeColors = new Map([
-    ["Partnerships", "#57068c"],
-    ["Topics", "#8e5bc2"],
-    ["Methods", "#37474f"],
-    ["Disciplines", "#6f8f9c"]
+  // Each theme is a color family; its categories step from the darker to the lighter tone.
+  // "text" is the shade used for the theme label and panel headings (readable on white).
+  const themeRamps = new Map([
+    ["Partnerships", { dark: "#4B0082", light: "#9B59D0", text: "#4B0082" }],
+    ["Topics",       { dark: "#C2410C", light: "#FDA34B", text: "#C2410C" }],
+    ["Method", { dark: "#C2185B", light: "#F7A8C8", text: "#C2185B" }],
+    ["Disciplines",  { dark: "#B8860B", light: "#FFD84D", text: "#9A7000" }]
   ]);
   const typeLabels = {
     article: "Journal article",
@@ -28,27 +29,42 @@ network = {
     presentation: "Conference presentation"
   };
 
-  // Build categories and attach each work to the subtopics it is tagged with
-  const subs = taxonomy.map(d => ({ theme: d.theme, name: d.subtopic, label: d.label || d.subtopic, members: [] }));
+  // Build categories and attach each work to the categories marked in its row
+  const subs = taxonomy.map(d => ({ theme: d.theme, group: (d.group || "").trim(), name: d.subtopic, label: d.label || d.subtopic, members: [] }));
   const subByName = new Map(subs.map(s => [s.name, s]));
+  // Match column names loosely: ignore case, extra spaces, and "&" vs "and"
+  const norm = x => (x || "").toLowerCase().replace(/&/g, " and ").replace(/\s+/g, " ").trim();
+  const colFor = new Map(items.columns.map(c => [norm(c), c]));
+  subs.forEach(s => s.column = colFor.get(norm(s.name)));
+  subs.filter(s => !s.column).forEach(s => console.warn(`Category "${s.name}" has no matching column in network-items.csv`));
+  const known = new Set(["type", "title", "authors", "venue", "year", "link", ...subs.map(s => s.column)]);
+  items.columns.filter(c => !known.has(c)).forEach(c => console.warn(`Column "${c}" in network-items.csv is not in network-taxonomy.csv`));
   const papers = items.map((d, i) => ({
     ...d, id: i,
-    tagList: d.tags.split(";").map(t => t.trim()).filter(Boolean),
+    tagList: subs.filter(s => s.column && /^(x|yes|y|1|true)$/i.test((d[s.column] || "").trim())).map(s => s.name),
     dots: []
   }));
   for (const p of papers) {
     for (const t of p.tagList) {
-      const s = subByName.get(t);
-      if (s) s.members.push(p); else console.warn(`Unknown tag "${t}" on: ${p.title}`);
+      subByName.get(t).members.push(p);
     }
   }
 
-  // Lay subtopics around the circle; each gets room for its dots and its label (in pixels),
-  // then everything is scaled to fit the circumference
-  const dotPx = 14, labelCharPx = 8.6, gapSubPx = 16, gapThemePx = 60;
-  subs.forEach(s => s.px = Math.max((s.members.length + 1) * dotPx, s.label.length * labelCharPx + 12));
+  // Lay subtopics around the circle. Each gets room for its dots and for its label,
+  // measured in the page's actual font so labels never run into each other
+  await document.fonts.ready;
+  const ctx = document.createElement("canvas").getContext("2d");
+  ctx.font = `17px ${getComputedStyle(document.body).fontFamily}`;
+  const textW = t => ctx.measureText(t).width;
+  const dotPx = 13, gapSubPx = 10, gapThemePx = 40, labelPad = 18;
+  subs.forEach(s => s.px = Math.max((s.members.length + 1) * dotPx, textW(s.label) + labelPad));
   const gapAfter = subs.map((s, i) => subs[(i + 1) % subs.length].theme !== s.theme ? gapThemePx : gapSubPx);
-  const scale = (2 * Math.PI * R) / (d3.sum(subs, s => s.px) + d3.sum(gapAfter));
+  const totalPx = d3.sum(subs, s => s.px) + d3.sum(gapAfter);
+  // The circle grows when the labels need more room than the default radius allows
+  const R = Math.max(380, totalPx / (2 * Math.PI));
+  const W = 2 * R + 540, H = 2 * R + 480, cx = W / 2, cy = H / 2;
+  const dotR = R - 14, subR = R * 0.62, themeR = R * 0.28;
+  const scale = (2 * Math.PI * R) / totalPx;
   const toAng = px => (px * scale) / R;
   let a = toAng(gapAfter[gapAfter.length - 1] / 2);
   subs.forEach((s, i) => {
@@ -62,14 +78,14 @@ network = {
   });
   const themes = Array.from(d3.group(subs, s => s.theme), ([name, ss]) => ({
     name, subs: ss, a0: d3.min(ss, s => s.a0), a1: d3.max(ss, s => s.a1),
-    color: themeColors.get(name) || "#57068c"
+    ramp: themeRamps.get(name) || { dark: "#57068c", light: "#b48ad9", text: "#57068c" }
   }));
-  themes.forEach(t => t.mid = (t.a0 + t.a1) / 2);
+  themes.forEach(t => { t.mid = (t.a0 + t.a1) / 2; t.color = t.ramp.text; });
   const themeByName = new Map(themes.map(t => [t.name, t]));
   subs.forEach(s => {
     const t = themeByName.get(s.theme);
     const k = t.subs.indexOf(s);
-    s.color = d3.interpolateRgb(t.color, "#ffffff")(k % 2 ? 0.38 : 0);
+    s.color = d3.interpolateRgb(t.ramp.dark, t.ramp.light)(t.subs.length > 1 ? k / (t.subs.length - 1) : 0);
   });
 
   const pt = (ang, r) => [cx + r * Math.sin(ang), cy - r * Math.cos(ang)];
@@ -91,10 +107,32 @@ network = {
     }
   }
 
-  // Layout: info panel beside the diagram
+  // Layout: compact info panel in the top-left corner, diagram to the right, and a
+  // button in the top-right corner that expands the whole piece to full screen
   const root = html`<div class="network-wrap"></div>`;
-  const panel = html`<div class="network-panel"></div>`;
-  root.append(panel);
+  const panel = html`<div class="network-panel" aria-live="polite"></div>`;
+  const fsButton = html`<button type="button" class="network-fs-btn" aria-label="View full screen" title="View full screen"><i class="bi bi-arrows-angle-expand"></i></button>`;
+  root.append(panel, fsButton);
+  const setExpanded = on => {
+    root.classList.toggle("is-expanded", on);
+    document.body.classList.toggle("network-expanded", on);
+    fsButton.innerHTML = on ? '<i class="bi bi-arrows-angle-contract"></i>' : '<i class="bi bi-arrows-angle-expand"></i>';
+    fsButton.setAttribute("aria-label", on ? "Exit full screen" : "View full screen");
+    fsButton.title = on ? "Exit full screen (Esc)" : "View full screen";
+  };
+  fsButton.addEventListener("click", async () => {
+    const on = !root.classList.contains("is-expanded");
+    if (on) {
+      setExpanded(true);
+      try { if (root.requestFullscreen) await root.requestFullscreen(); } catch (e) { /* overlay still works */ }
+    } else {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      setExpanded(false);
+    }
+  });
+  // Leaving browser full screen (Esc) also collapses the piece
+  document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement) setExpanded(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && root.classList.contains("is-expanded")) setExpanded(false); });
   const svg = d3.select(root).append("svg")
     .attr("viewBox", `0 0 ${W} ${H}`)
     .attr("class", "network-svg")
@@ -113,10 +151,12 @@ network = {
     .attr("d", s => d3.arc().innerRadius(R).outerRadius(R + 9).startAngle(s.a0).endAngle(s.a1).cornerRadius(2)())
     .attr("fill", s => s.color)
     .style("cursor", "pointer")
-    .on("mouseenter", (e, s) => highlightSub(s))
-    .on("mouseleave", reset);
+    .on("mouseenter", (e, s) => preview({ sub: s }))
+    .on("mouseleave", restore)
+    .on("click", (e, s) => { e.stopPropagation(); togglePin({ sub: s }); });
 
-  // Subtopic labels follow the arc; flipped on the bottom half so they read upright
+  // Labels follow the arc. Each theme reads in one direction: themes centered near the
+  // bottom are flipped so their labels read upright; side themes read top to bottom
   const defs = svg.append("defs");
   const arcPath = (r, a0, a1, flip) => {
     const [x0, y0] = pt(flip ? a1 : a0, r), [x1, y1] = pt(flip ? a0 : a1, r);
@@ -124,7 +164,8 @@ network = {
     return `M${x0},${y0} A${r},${r} 0 ${large} ${flip ? 0 : 1} ${x1},${y1}`;
   };
   subs.forEach((s, i) => {
-    const flip = s.mid > Math.PI / 2 && s.mid < (3 * Math.PI) / 2;
+    const tm = themeByName.get(s.theme).mid;
+    const flip = s.flip = tm > 0.6 * Math.PI && tm < 1.4 * Math.PI;
     s.labelId = `net-sub-${i}`;
     defs.append("path").attr("id", s.labelId)
       .attr("d", arcPath(flip ? R + 30 : R + 18, s.a0 - 0.4, s.a1 + 0.4, flip));
@@ -137,10 +178,41 @@ network = {
     .attr("text-anchor", "middle")
     .text(s => s.label);
 
+  // Optional middle layer within a theme (the "group" column in network-taxonomy.csv)
+  themes.forEach(t => {
+    t.groups = [];
+    t.subs.forEach(s => {
+      if (!s.group) return;
+      const last = t.groups[t.groups.length - 1];
+      if (last && last.name === s.group) { last.a1 = s.a1; last.subs.push(s); }
+      else t.groups.push({ name: s.group, theme: t, a0: s.a0, a1: s.a1, subs: [s] });
+    });
+  });
+  const groups = themes.flatMap(t => t.groups);
+  groups.forEach((g, i) => {
+    g.mid = (g.a0 + g.a1) / 2;
+    g.flip = g.subs[0].flip;
+    g.labelId = `net-group-${i}`;
+    defs.append("path").attr("id", g.labelId)
+      .attr("d", arcPath(g.flip ? R + 70 : R + 57, g.a0 - 0.4, g.a1 + 0.4, g.flip));
+  });
+  svg.append("g").selectAll("path").data(groups).join("path")
+    .attr("transform", `translate(${cx},${cy})`)
+    .attr("d", g => d3.arc().innerRadius(R + 43).outerRadius(R + 46).startAngle(g.a0).endAngle(g.a1)())
+    .attr("fill", g => g.theme.color)
+    .attr("fill-opacity", 0.6);
+  svg.append("g").selectAll("text").data(groups).join("text")
+    .attr("class", "network-group-label")
+    .attr("fill", g => g.theme.color)
+    .append("textPath")
+    .attr("href", g => `#${g.labelId}`)
+    .attr("startOffset", "50%")
+    .attr("text-anchor", "middle")
+    .text(g => g.name);
   svg.append("g").selectAll("text").data(themes).join("text")
     .attr("class", "network-theme-label")
-    .attr("x", t => pt(t.mid, R + 70)[0])
-    .attr("y", t => pt(t.mid, R + 70)[1])
+    .attr("x", t => pt(t.mid, t.groups.length ? R + 104 : R + 70)[0])
+    .attr("y", t => pt(t.mid, t.groups.length ? R + 104 : R + 70)[1])
     .attr("text-anchor", t => Math.sin(t.mid) > 0.2 ? "start" : Math.sin(t.mid) < -0.2 ? "end" : "middle")
     .attr("dominant-baseline", "middle")
     .attr("fill", t => t.color)
@@ -154,19 +226,28 @@ network = {
     .attr("fill-opacity", d => d.paper.type === "presentation" ? 1 : 0.55)
     .attr("stroke", d => d.sub.color)
     .attr("stroke-width", d => d.paper.type === "presentation" ? 1.6 : 0)
-    .style("cursor", d => d.paper.link ? "pointer" : "default")
-    .on("mouseenter", (e, d) => highlightPaper(d.paper))
-    .on("mouseleave", reset)
-    .on("click", (e, d) => { if (d.paper.link) window.open(d.paper.link, "_blank", "noopener"); });
+    .style("cursor", "pointer")
+    .on("mouseenter", (e, d) => preview({ paper: d.paper }))
+    .on("mouseleave", restore)
+    .on("click", (e, d) => { e.stopPropagation(); togglePin({ paper: d.paper }); });
+
+  // Clicking empty space in the diagram clears a pinned selection
+  svg.on("click", () => { if (pinned) { pinned = null; restore(); } });
 
   // Info panel content
+  const clearButton = () => {
+    const b = html`<button type="button" class="network-clear">Clear selection ×</button>`;
+    b.addEventListener("click", () => { pinned = null; restore(); });
+    return b;
+  };
   const defaultPanel = () => {
     panel.innerHTML = "";
     panel.append(html`<div class="network-kicker">Explore my work</div>
-      <p class="network-help">Each dot is one of my papers or presentations, placed under every partnership, topic, method, and discipline it draws on. Hover over a dot to see how a single project connects across them, or over an arc to see all the work in that area.</p>
-      <p class="network-legend"><span class="dot filled"></span> Paper or chapter &nbsp; <span class="dot hollow"></span> Presentation</p>`);
+      <p class="network-help">Each dot is one of my papers or presentations. Hover over one to explore how each project draws on different topics, methods, and disciplines, and whether it was conducted in partnership with an agency. Hover over an arc to see everything I've done in that area.</p>
+      <p class="network-legend"><span class="dot filled"></span> Paper or chapter &nbsp; <span class="dot hollow"></span> Presentation</p>
+      <p class="network-hint">Click a dot or arc to keep it selected.</p>`);
   };
-  const showPaper = p => {
+  const showPaper = (p, isPinned) => {
     panel.innerHTML = "";
     const tagsByTheme = themes
       .map(t => ({ t, tags: p.tagList.filter(x => subByName.get(x)?.theme === t.name) }))
@@ -175,14 +256,20 @@ network = {
       <div class="network-title">${p.title}</div>
       <div class="network-meta">${p.authors}${p.year ? ` (${p.year})` : ""} · <em>${p.venue}</em></div>
       <div class="network-tags">${tagsByTheme.map(g => html`<div><span style="color:${g.t.color}">${g.t.name}:</span> ${g.tags.join(", ")}</div>`)}</div>
-      ${p.link ? html`<div class="network-link">Click the dot to open it →</div>` : ""}`);
+      ${p.link ? html`<div class="network-link"><a href="${p.link}" target="_blank" rel="noopener">Open this ${p.type === "presentation" ? "presentation" : "paper"} ↗</a></div>` : ""}
+      ${isPinned ? "" : html`<p class="network-hint">Click the dot to keep this open.</p>`}`);
+    if (isPinned) panel.append(clearButton());
   };
-  const showSub = s => {
+  const showSub = (s, isPinned) => {
     panel.innerHTML = "";
+    const list = html`<ul class="network-list">${s.members.map(p => html`<li><button type="button" class="network-item">${p.title}</button></li>`)}</ul>`;
+    // In a pinned list, clicking a title selects that work
+    list.querySelectorAll(".network-item").forEach((b, i) => b.addEventListener("click", () => { pinned = { paper: s.members[i] }; restore(); }));
     panel.append(html`<div class="network-kicker" style="color:${themeByName.get(s.theme).color}">${s.theme}</div>
       <div class="network-title">${s.name}</div>
-      <div class="network-meta">${s.members.length} ${s.members.length === 1 ? "work" : "works"}</div>
-      <ul class="network-list">${s.members.map(p => html`<li>${p.title}</li>`)}</ul>`);
+      <div class="network-meta">${s.members.length} ${s.members.length === 1 ? "work" : "works"}</div>`, list);
+    if (isPinned) panel.append(clearButton());
+    else panel.append(html`<p class="network-hint">Click the arc to keep this list open.</p>`);
   };
 
   function setActive(isActive) {
@@ -196,17 +283,26 @@ network = {
       .attr("r", d => isActive(d.paper) ? 6.5 : 5);
     linkSel.filter(d => isActive(d.paper)).raise();
   }
-  function highlightPaper(p) { setActive(q => q === p); showPaper(p); }
-  function highlightSub(s) { const set = new Set(s.members); setActive(q => set.has(q)); showSub(s); }
+
+  // Hover previews a selection; a click pins it until it is clicked again or cleared
+  let pinned = null;
+  function show(sel, isPinned) {
+    if (sel.paper) { setActive(q => q === sel.paper); showPaper(sel.paper, isPinned); }
+    else { const set = new Set(sel.sub.members); setActive(q => set.has(q)); showSub(sel.sub, isPinned); }
+  }
+  function preview(sel) { show(sel, false); }
+  function restore() { if (pinned) show(pinned, true); else reset(); }
+  function togglePin(sel) {
+    const same = pinned && (pinned.paper ? pinned.paper === sel.paper : pinned.sub === sel.sub);
+    pinned = same ? null : sel;
+    restore();
+  }
   function reset() {
     linkSel.attr("stroke", "currentColor").attr("stroke-opacity", 0.09).attr("stroke-width", 1);
     dotSel.attr("fill-opacity", d => d.paper.type === "presentation" ? 1 : 0.55).attr("stroke-opacity", 1).attr("r", 5);
     defaultPanel();
   }
-
   defaultPanel();
   return root;
 }
 ```
-
-:::

@@ -1,6 +1,7 @@
 ---
 title: "Publications"
 toc: true
+toc-expand: true
 ---
 
 {{< include _network.qmd >}}

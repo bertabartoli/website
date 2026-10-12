@@ -24,8 +24,8 @@ website:
 format:
   html:
     theme:
-      light: cosmo
-      dark: [darkly, dark.scss]
+      light: [cosmo, fonts.scss]
+      dark: [darkly, fonts.scss, dark.scss]
     css: styles.css
     toc: false
 

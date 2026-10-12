@@ -22,12 +22,12 @@ page-layout: full
 I am a PhD candidate in Psychology and Social Intervention at New York University, where my research bridges psychology, education policy, and quantitative methods to understand how social and institutional contexts shape children's access to educational opportunities. Through interdisciplinary research and partnerships with policymakers and practitioners, I seek to generate evidence and develop practical tools that make early education systems more equitable, accessible, and responsive to the needs of children and families.
 
 My research interests are primarily motivated by my experiences growing up in Caracas, Venezuela, where I witnessed stark inequities in children's access to educational opportunities. I am committed to contributing to our understanding of educational access and how it can be strengthened in ways that enable policy leaders to build systems for all.
+
+My research has been funded by the Institute of Education Sciences (IES) and the National Science Foundation (NSF), as an [IES Predoctoral Interdisciplinary Research Training (PIRT) fellow](https://steinhardt.nyu.edu/ihdsc/ies-pirt) and a recipient of the [American Educational Research Association (AERA)–NSF Dissertation Grant](https://www.aera.net/Professional-Opportunities-Funding/AERA-Funding-Opportunities/AERA-NSF-Grants-Program/Dissertation-Grants). I was also named a semifinalist for the [National Academy of Education/Spencer Dissertation Fellowship](https://naeducation.org/naed-spencer-dissertation-fellowship/).
 :::
 
 :::
 
 ::: {.home-more}
-My research has been funded by the Institute of Education Sciences (IES) and the National Science Foundation (NSF), as an [IES Predoctoral Interdisciplinary Research Training (PIRT) fellow](https://steinhardt.nyu.edu/ihdsc/ies-pirt) and a recipient of the [American Educational Research Association (AERA)–NSF Dissertation Grant](https://www.aera.net/Professional-Opportunities-Funding/AERA-Funding-Opportunities/AERA-NSF-Grants-Program/Dissertation-Grants). I was also named a semifinalist for the [National Academy of Education/Spencer Dissertation Fellowship](https://naeducation.org/naed-spencer-dissertation-fellowship/).
-
 I am completing a Ph.D. in Psychology and Social Intervention, with a concentration in Education Policy, at New York University (expected Spring 2027). I hold an M.S.Ed. in Statistics, Measurement, Assessment, Research and Technology from the University of Pennsylvania Graduate School of Education, and a B.A. in Economics and International Affairs, *magna cum laude* (minors in Mathematics, Psychology, and Business Administration), from Northeastern University.
 :::

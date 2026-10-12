@@ -104,7 +104,7 @@ main h2,
 }
 
 .home-profile {
-  flex: 0 0 300px;
+  flex: 0 0 340px;
   text-align: center;
 }
 
@@ -114,8 +114,8 @@ main h2,
 
 .home-photo,
 .home-profile img {
-  width: 260px;
-  height: 260px;
+  width: 310px;
+  height: 310px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -155,45 +155,73 @@ main h2,
   }
 }
 
-/* Publications page: interactive research map */
+/* Publications page: interactive research map.
+   Compact info panel in the top-left corner, diagram on the right,
+   expand button in the top-right corner. */
 .network-wrap {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  margin: 1rem 0 2.5rem;
-}
-
-.network-panel {
-  flex: 0 0 250px;
-  min-height: 260px;
-  padding-top: 4rem;
+  position: relative;
+  margin: 0.5rem 0 2.5rem;
+  min-height: 420px;
 }
 
 .network-svg {
-  flex: 1 1 auto;
-  width: 100%;
-  max-width: 860px;
+  display: block;
+  width: 78%;
+  margin-left: auto;
   height: auto;
   overflow: visible;
 }
 
+.network-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32%;
+  max-width: 250px;
+  max-height: 100%;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  z-index: 1;
+}
+
+.network-fs-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: var(--bs-body-bg, #fff);
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.network-fs-btn:hover { border-color: #57068c; color: #57068c; }
+
 .network-kicker {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #57068c;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
+  padding-top: 0.5rem;
+  border-top: 3px solid currentColor;
+  display: inline-block;
+  min-width: 60%;
 }
 
 body.quarto-dark .network-kicker { color: #c9a3ef; }
 
 .network-title {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.3rem;
+  font-size: 1.02rem;
   font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .network-meta,
@@ -202,26 +230,31 @@ body.quarto-dark .network-kicker { color: #c9a3ef; }
 .network-tags,
 .network-link,
 .network-list {
-  font-size: 0.92rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
-.network-meta { margin-bottom: 0.75rem; opacity: 0.85; }
-.network-tags div { margin-bottom: 0.2rem; }
+.network-meta {
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+
+.network-tags div { margin-bottom: 0.1rem; }
 .network-tags span { font-weight: 600; }
-.network-link { margin-top: 0.75rem; opacity: 0.8; }
-.network-list { padding-left: 1.1rem; }
+.network-link { margin-top: 0.5rem; opacity: 0.8; }
+.network-list { padding-left: 1rem; margin-bottom: 0.25rem; }
 .network-list li { margin-bottom: 0.3rem; }
 
 .network-legend .dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   vertical-align: middle;
-  border: 1.6px solid #8e5bc2;
+  border: 1.6px solid #800080;
 }
 
-.network-legend .dot.filled { background: #8e5bc2; opacity: 0.7; }
+.network-legend .dot.filled { background: #800080; opacity: 0.7; }
 
 .network-sub-label {
   font-size: 17px;
@@ -233,7 +266,80 @@ body.quarto-dark .network-kicker { color: #c9a3ef; }
   font-weight: 600;
 }
 
-@media (max-width: 991.98px) {
-  .network-wrap { flex-direction: column; gap: 0.5rem; }
-  .network-panel { flex-basis: auto; min-height: 200px; padding-top: 0; }
+/* Full screen (browser full screen, or a fixed overlay where that isn't available) */
+.network-wrap.is-expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  margin: 0;
+  padding: 2rem 2.5rem;
+  background: var(--bs-body-bg, #fff);
+  overflow: auto;
 }
+
+.network-wrap.is-expanded .network-svg {
+  width: auto;
+  height: calc(100vh - 4rem);
+  max-width: 100%;
+}
+
+.network-wrap.is-expanded .network-panel {
+  top: 2rem;
+  left: 2.5rem;
+  width: 26%;
+  max-width: 340px;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.network-wrap.is-expanded .network-fs-btn { top: 1.5rem; right: 1.5rem; }
+.network-wrap.is-expanded .network-title { font-size: 1.3rem; }
+.network-wrap.is-expanded .network-meta,
+.network-wrap.is-expanded .network-help,
+.network-wrap.is-expanded .network-legend,
+.network-wrap.is-expanded .network-tags,
+.network-wrap.is-expanded .network-link,
+.network-wrap.is-expanded .network-list { font-size: 0.95rem; }
+
+body.network-expanded { overflow: hidden; }
+
+/* Phones: panel above the diagram */
+@media (max-width: 767.98px) {
+  .network-panel { position: static; width: auto; max-width: none; min-height: 150px; padding-right: 3rem; }
+  .network-svg { width: 100%; }
+  .network-wrap.is-expanded .network-svg { width: 100%; height: auto; }
+}
+
+/* Research map: lift the deep indigo and purple labels in dark mode */
+body.quarto-dark .network-theme-label { filter: brightness(1.9); }
+
+.network-group-label {
+  font-size: 16px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+body.quarto-dark .network-group-label { filter: brightness(1.9); }
+
+/* "On this page" table of contents: larger */
+#TOC, #TOC .nav-link { font-size: 0.98rem; }
+#toc-title { font-size: 1.05rem; font-weight: 600; }
+/* Research map: click-to-pin controls */
+.network-item {
+  all: unset;
+  cursor: pointer;
+  text-align: left;
+}
+.network-item:hover { text-decoration: underline; }
+.network-clear {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.network-clear:hover { border-color: #57068c; color: #57068c; }
+.network-hint { font-size: 0.75rem; opacity: 0.7; margin: 0.4rem 0 0; }
+.network-link a { font-weight: 600; }
