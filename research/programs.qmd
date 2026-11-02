@@ -1,0 +1,25 @@
+---
+title: "Strengthening Programs and Implementation"
+description: "Whether education programs work, and the conditions under which they can be implemented well, improved, and scaled."
+toc: true
+---
+
+In partnership with education agencies, I study how education systems and the services they deliver can be strengthened. This work asks both whether programs foster children's development and how they are put into practice: what supports successful implementation, and how effective programs can be improved and scaled equitably. With New York City Public Schools, this includes evaluations of the city's universal pre-K professional learning and arts integration programs, and an ongoing study of a strings-based arts program in pre-K through grade 2. I have also partnered with education agencies in Argentina, Peru, and Latvia.
+
+## Related Work
+
+Abenavoli, R., Siegel, J., Aviles, A. I., Kitrosser, J., Dominguez, A., **Bartoli, B.**, Young, J., Kim, J., Davis, R., Wallack, J., Cappella, E., & Morris-Perez, P. (2026). Strengthening school readiness for all: Impacts of New York City's Pre-K for All professional learning on teacher practice and children's school readiness. *Prevention Science*, 1–15. [[DOI]](https://doi.org/10.1007/s11121-026-01963-7)
+
+Aviles, A. I., Abenavoli, R., **Bartoli, B.**, Siegel, J., Kitrosser, J., Dominguez, A., Young, J., Kim, J., Rockey, K., Barahal, H., Wallack, J., Cappella, E., & Morris-Perez, P. (2026). Bringing arts integration to universal pre-K: Variation in impact of New York City's Create. *Early Childhood Research Quarterly, 78*, 45–58. [[DOI]](https://doi.org/10.1016/j.ecresq.2026.08.006)
+
+Kumar, A., Wolf, S., **Bartoli, B.**, Bala, J., Varma, V., & Zanutto, E. (2026). Supporting early learning: An audio-video program for low-literate parents of young children in urban India. *International Journal of Educational Research, 137*. [[DOI]](https://doi.org/10.1016/j.ijer.2025.102926)
+
+**Bartoli, B.**, Aviles, A. I., Blecker, A., Abenavoli, R., Kohan, A., Song, Y., Cappella, E., Morris-Perez, P., et al. Changing teacher practices in pre-K: Qualitative insights from New York City's Create. *Work in progress.*
+
+**Bartoli, B.**, Aviles, A. I., Abenavoli, R., *Mascorro-Santibañez, M.*, Cappella, E., Morris-Perez, P., et al. Integrating the arts at scale: A qualitative study of implementation strategies and children's skill development in New York City's universal pre-K. *Work in progress.*
+
+Ganimian, A. J., Page, L. C., Childs, J., Mesalles, V., & **Bartoli, B.** Pervasive, predictable, and (partly) preventable: Student absenteeism in a middle-income country. *Work in progress.*
+
+Vegas, E., **Bartoli, B.**, Giesso, S., & Rosich, V. (Eds.). *Beyond Oil: Education for Growth, Inclusion, and Human Flourishing in Venezuela.* Harvard Graduate School of Education. Under review at Oxford University Press.
+
+*Jaramillo Samper, M.*, & **Bartoli, B.** Venezuela's future begins in early childhood. In *Beyond Oil*. Under review at Oxford University Press.
